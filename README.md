@@ -5,4 +5,4 @@
 ## Table of Contents
 
 * [Section 1: SELECT QUERY](./docs/tutorials/index.md)
-    * [Subsection 1.1: WHERE](./docs/tutorials/index.md)
+    <!-- * [Subsection 1.1: WHERE](./docs/tutorials/index.md) -->
