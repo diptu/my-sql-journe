@@ -2,7 +2,7 @@ site_name: my-sql-journe
 site_url: https://github.com/diptu/my-sql-journe
 
 theme:
-  name: "material"
+  name: readthedocs
   features:
     - navigation.tabs
     - navigation.sections
