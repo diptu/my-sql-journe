@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/diptu/my-sql-journe/tutorials/insertml/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>📚 MySQL 2.2: INSERT INTO Statement (Multiple Rows) - my-sql-journe</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud83d\udcda MySQL 2.2: INSERT INTO Statement (Multiple Rows)";
+        var mkdocs_page_input_path = "tutorials/insertml.md";
+        var mkdocs_page_url = "/diptu/my-sql-journe/tutorials/insertml/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> my-sql-journe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">tutorials</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">my-sql-journe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">📚 MySQL 2.2: INSERT INTO Statement (Multiple Rows)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mysql-22-insert-into-statement-multiple-rows">📚 MySQL 2.2: <code>INSERT INTO</code> Statement (Multiple Rows)</h1>
+<p>In MySQL, you can insert <strong>multiple rows at once</strong> using a single <code>INSERT INTO</code> statement.<br />
+This method is <strong>faster and more efficient</strong> than inserting rows one by one.</p>
+<hr />
+<h2 id="basic-syntax">✨ Basic Syntax</h2>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="n">column3</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">VALUES</span><span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p">(</span><span class="n">value1a</span><span class="p">,</span><span class="w"> </span><span class="n">value2a</span><span class="p">,</span><span class="w"> </span><span class="n">value3a</span><span class="p">,</span><span class="w"> </span><span class="p">...),</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p">(</span><span class="n">value1b</span><span class="p">,</span><span class="w"> </span><span class="n">value2b</span><span class="p">,</span><span class="w"> </span><span class="n">value3b</span><span class="p">,</span><span class="w"> </span><span class="p">...),</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p">(</span><span class="n">value1c</span><span class="p">,</span><span class="w"> </span><span class="n">value2c</span><span class="p">,</span><span class="w"> </span><span class="n">value3c</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</span></code></pre></div>
+<h3 id="key-concepts">Key concepts</h3>
+<ul>
+<li>
+<p><code>table_name</code>: Name of the table.</p>
+</li>
+<li>
+<p>Each set of parentheses <code>()</code> contains the values for one row.</p>
+</li>
+</ul>
+<p>-Multiple rows are separated by commas <code>,</code></p>
+<h1 id="insert-multiple-employees-at-once">Insert multiple employees at once:</h1>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="n">FIRST_NAME</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="n">LAST_NAME</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">EMAIL</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">PHONE_NUMBER</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="n">HIRE_DATE</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="n">JOB_ID</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="n">SALARY</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="n">COMMISSION_PCT</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="n">MANAGER_ID</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="n">DEPARTMENT_ID</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">VALUES</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Brown&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;alice.brown@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;111-222-3333&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024-04-26&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HR02&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">55000</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">03</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Green&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bob.green@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;444-555-6666&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024-04-26&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DEV02&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">70000</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;White&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;charlie.white@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;777-888-9999&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024-04-26&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SALES01&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">65000</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">04</span><span class="p">,</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="key-concepts_1">Key Concepts:</h3>
+<ul>
+<li>
+<p>Three rows are inserted with a single command.</p>
+</li>
+<li>
+<p><code>EMPLOYEE_ID</code> is auto-generated for each inserted row.</p>
+</li>
+</ul>
+<h3 id="insert-without-listing-columns">Insert Without Listing Columns</h3>
+<ul>
+<li>You can insert multiple rows without listing column names (be careful with the order)</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">VALUES</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;David&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;King&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;david.king@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123-123-1234&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024-04-26&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;MGR01&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">80000</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">06</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">),</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Eva&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Stone&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;eva.stone@example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;321-321-4321&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024-04-26&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DEV03&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">62000</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">02</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
+</span></code></pre></div>
+<h2 id="references">📚 References</h2>
+<ul>
+<li><a href="https://www.mysqltutorial.org/mysql-basics/mysql-insert/">MySQL INSERT Tutorial – MySQL Tutorial</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
