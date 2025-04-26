@@ -16,7 +16,7 @@ Each solved LeetCode problem will be committed to this repository with:
 
 As this journey progresses, you'll find solutions covering a wide range of SQL topics, including:
 
-* **Basic Queries:** `SELECT`, `FROM`, `WHERE`, `ORDER BY`, `LIMIT`, `DISTINCT`
+* **Basic Queries:** `CREATE`,`INSERT`, `SELECT`, `FROM`, `WHERE`, `ORDER BY`, `LIMIT`, `DISTINCT`
 * **Filtering and Sorting:** Using operators like `AND`, `OR`, `NOT`, `IN`, `BETWEEN`, `LIKE`
 * **Aggregate Functions:** `COUNT()`, `SUM()`, `AVG()`, `MIN()`, `MAX()`, `GROUP BY`, `HAVING`
 * **Joins:** `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL OUTER JOIN`
