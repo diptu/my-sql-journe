@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/diptu/my-sql-journe/tutorials/selectp1/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>📚 MySQL: SELECT Statement Comprehensive Tutorial - my-sql-journe</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud83d\udcda MySQL: SELECT Statement Comprehensive Tutorial";
+        var mkdocs_page_input_path = "tutorials/selectp1.md";
+        var mkdocs_page_url = "/diptu/my-sql-journe/tutorials/selectp1/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> my-sql-journe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">tutorials</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../reference/">Refference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">my-sql-journe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">📚 MySQL: SELECT Statement Comprehensive Tutorial</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mysql-select-statement-comprehensive-tutorial">📚 MySQL: <code>SELECT</code> Statement Comprehensive Tutorial</h1>
+<p>The <code>SELECT</code> statement in MySQL is used to <strong>retrieve data</strong> from one or more tables.<br />
+It is one of the most <strong>important and frequently used</strong> SQL commands.</p>
+<p>Mastering <code>SELECT</code> is essential for querying and analyzing database information effectively. 🚀</p>
+<hr />
+<h3 id="basic-syntax">✨ Basic Syntax</h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="p">[</span><span class="k">DISTINCT</span><span class="p">]</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">expression</span><span class="w"> </span><span class="p">[</span><span class="k">alias</span><span class="p">],</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="err">}</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="simple-example">Simple Example:</h3>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</span></code></pre></div>
+- <code>*</code> selects all columns.</p>
+<ul>
+<li>
+<p><code>DISTINCT</code> removes duplicate results.</p>
+</li>
+<li>
+<p>alias allows you to rename a column or expression temporarily.</p>
+</li>
+</ul>
+<h3 id="selecting-all-columns">📋 Selecting All Columns</h3>
+<ul>
+<li>Use the <code>*</code> wildcard to retrieve every column:</li>
+</ul>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ This returns all the data for every employee in the employees table.</p>
+<h3 id="selecting-specific-columns">📋 Selecting Specific Columns</h3>
+<ul>
+<li>Select only the needed columns:
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">FIRST_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">LAST_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">EMAIL</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div></li>
+<li>✅ Fetches only FIRST_NAME, LAST_NAME, and EMAIL columns, making queries faster and results cleaner.</li>
+</ul>
+<h3 id="using-arithmetic-operators-in-select">🧮 Using Arithmetic Operators in SELECT</h3>
+<p>You can perform calculations inside your SELECT statements:
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">salary</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ Calculates the annual salary plus $100 bonus.</p>
+<h3 id="using-column-aliases">✏️ Using Column Aliases</h3>
+<ul>
+<li>Give a friendly name to columns or calculations using aliases:
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Annual Salary&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div></li>
+<li>✅ Aliases make output easier to understand.</li>
+</ul>
+<h3 id="using-concatenation-operator">🔗 Using Concatenation Operator</h3>
+<ul>
+<li>You can combine strings using the CONCAT function:
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; is a &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">job_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Employee Details&quot;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div></li>
+<li>✅ Creates a readable string about each employee's job.</li>
+</ul>
+<h3 id="eliminating-duplicate-rows-with-distinct">🚫 Eliminating Duplicate Rows with DISTINCT</h3>
+<ul>
+<li>Remove duplicates using DISTINCT:
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">department_id</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div></li>
+<li>✅ Returns each department ID only once, even if multiple employees belong to the same department.</li>
+</ul>
+<h3 id="filtering-results-using-where-clause">🔍 Filtering Results Using WHERE Clause</h3>
+<ul>
+<li>Fetch rows that meet a specific condition:</li>
+</ul>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">FIRST_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">LAST_NAME</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">JOB_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEV02&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ Returns employees whose job ID is DEV02.</p>
+<h3 id="filtering-examples">🎯 Filtering Examples</h3>
+<p>-Limiting Results by Department
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">job_id</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="p">;</span>
+</span></code></pre></div></p>
+<h3 id="filtering-with-strings-and-dates">Filtering with Strings and Dates</h3>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">job_id</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;WHALEN&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+- String comparisons must match exactly (case-sensitive by default).</p>
+<h3 id="using-comparison-operators">Using Comparison Operators</h3>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3000</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ Returns employees earning $3000 or less.</p>
+<h3 id="using-between-operator">Using BETWEEN Operator</h3>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2500</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">3500</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ Selects salaries between 2500 and 3500 inclusive.</p>
+<h3 id="using-in-operator">Using IN Operator</h3>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">201</span><span class="p">);</span>
+</span></code></pre></div>
+- ✅ Returns employees managed by either 100, 101, or 201.
+- </p>
+<h3 id="sorting-results-with-order-by">📈 Sorting Results with ORDER BY</h3>
+<ul>
+<li>Sort the output in ascending (ASC) or descending (DESC) order:</li>
+</ul>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">FIRST_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">SALARY</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SALARY</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</span></code></pre></div>
+- ASC is default (smallest to largest).
+- DESC sorts largest to smallest.
+- ✅ Retrieves employees sorted by highest salary first.</p>
+<h3 id="sorting-by-multiple-columns">🧩 Sorting by Multiple Columns</h3>
+<ul>
+<li>You can sort first by one column, then by another:</li>
+</ul>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ First sorts by department_id, then within each department sorts by salary descending.</p>
+<h3 id="combining-clauses-example">🚀 Combining Clauses Example</h3>
+<ul>
+<li>Use WHERE, ORDER BY, and LIMIT together:</li>
+</ul>
+<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">FIRST_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">LAST_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">SALARY</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">SALARY</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">60000</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SALARY</span><span class="w"> </span><span class="k">DESC</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span></code></pre></div>
+- ✅ Returns the top 3 employees earning above 60,000, ordered by highest salary first.</p>
+<h3 id="key-takeaways">🔥 Key Takeaways</h3>
+<ul>
+<li><code>SELECT</code> is used to fetch data.</li>
+<li>Use <code>WHERE</code> to filter rows.</li>
+<li>Use <code>ORDER</code> BY to sort rows.</li>
+<li>Use <code>DISTINCT</code> to remove duplicates.</li>
+<li>Use <code>LIMIT</code> to restrict the number of rows returned.</li>
+<li>Use aliases to make outputs more readable.
+-Operators like <code>BETWEEN</code>, <code>IN</code>, <code>CONCAT</code>, and arithmetic help in building powerful queries.</li>
+</ul>
+<h2 id="leet-code-problem">Leet code problem :</h2>
+<ul>
+<li>
+<p><img alt="Easy" src="https://img.shields.io/badge/Difficulty-Easy-brightgreen" />
+<a href="../1683/">1683. Invalid Tweets</a></p>
+</li>
+<li>
+<p><img alt="Easy" src="https://img.shields.io/badge/Difficulty-Easy-brightgreen" />
+<a href="../2356/">2356. Number of Unique Subjects Taught by Each Teacher</a></p>
+</li>
+<li>
+<p><img alt="Easy" src="https://img.shields.io/badge/Difficulty-Easy-brightgreen" />
+<a href="../1517/">1517. Find Users With Valid E-Mails</a></p>
+</li>
+<li>
+<p><img alt="Difficulty: Medium" src="https://img.shields.io/badge/Difficulty-Medium-yellow" />
+<a href="../1934/">1934. Confirmation Rate</a></p>
+</li>
+<li>
+<p><img alt="Difficulty: Medium" src="https://img.shields.io/badge/Difficulty-Medium-yellow" />
+<a href="../1907/">1907. Count Salary Categories</a></p>
+</li>
+</ul>
+<h2 id="references">📚 References</h2>
+<p><a href="https://www.mysqltutorial.org/mysql-basics/mysql-select/">MySQL SELECT Tutorial – MySQL Tutorial</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

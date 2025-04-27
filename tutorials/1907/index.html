@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/diptu/my-sql-journe/tutorials/1907/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1907 - my-sql-journe</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1907";
+        var mkdocs_page_input_path = "tutorials/1907.md";
+        var mkdocs_page_url = "/diptu/my-sql-journe/tutorials/1907/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> my-sql-journe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">tutorials</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../reference/">Refference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">my-sql-journe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1907</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <ul>
+<li><img alt="Difficulty: Medium" src="https://img.shields.io/badge/Difficulty-Medium-yellow" />
+<a href="https://leetcode.com/problems/count-salary-categories/">1907. Count Salary Categories</a></li>
+</ul>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>Write a solution to calculate the number of bank accounts for each salary category. The salary categories are:</p>
+<p>"Low Salary": All the salaries strictly less than $20000.
+"Average Salary": All the salaries in the inclusive range [$20000, $50000].
+"High Salary": All the salaries strictly greater than $50000.
+The result table must contain all three categories. If there are no accounts in a category, return 0.</p>
+<p>Return the result table in any order.</p>
+<h1 id="sql-query-categorizing-accounts-based-on-salary-ranges">📊 SQL Query: Categorizing Accounts Based on Salary Ranges</h1>
+<p>This query categorizes accounts into three groups based on income: <strong>Low Salary</strong>, <strong>Average Salary</strong>, and <strong>High Salary</strong>. It counts the number of accounts in each category by using <strong><code>CASE WHEN</code></strong> statements to evaluate income ranges and then combines the results using <strong><code>UNION ALL</code></strong>.</p>
+<hr />
+<h2 id="solution">🧐 Solution</h2>
+<div class="language-sql highlight"><span class="filename">query01</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s1">&#39;Low Salary&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20000</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">accounts_count</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">Accounts</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">SELECT</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="s1">&#39;Average Salary&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">accounts_count</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">FROM</span><span class="w"> </span><span class="n">Accounts</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">SELECT</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="s1">&#39;High Salary&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">accounts_count</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">FROM</span><span class="w"> </span><span class="n">Accounts</span><span class="p">;</span>
+</span></code></pre></div>
+<h2 id="explanation-breakdown">📋 Explanation Breakdown</h2>
+<h3 id="1-first-select-statement-low-salary">1. <strong>First SELECT Statement (Low Salary)</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Categorizes accounts with an income <strong>less than 20,000</strong> as <strong>'Low Salary'</strong>.</li>
+<li><strong>Explanation</strong>:<ul>
+<li><strong><code>'Low Salary' AS category</code></strong>: This assigns the label <strong>'Low Salary'</strong> to the first group.</li>
+<li><strong><code>COUNT(CASE WHEN income &lt; 20000 THEN 1 END) AS accounts_count</code></strong>: Counts the number of accounts where the <code>income</code> is less than 20,000. The <strong><code>CASE WHEN</code></strong> expression returns <code>1</code> for rows where the condition is true, and <strong><code>COUNT()</code></strong> aggregates those rows.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-second-select-statement-average-salary">2. <strong>Second SELECT Statement (Average Salary)</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Categorizes accounts with an income <strong>between 20,000 and 50,000</strong> as <strong>'Average Salary'</strong>.</li>
+<li><strong>Explanation</strong>:<ul>
+<li><strong><code>'Average Salary' AS category</code></strong>: This assigns the label <strong>'Average Salary'</strong> to the second group.</li>
+<li><strong><code>COUNT(CASE WHEN income &gt;= 20000 AND income &lt;= 50000 THEN 1 END) AS accounts_count</code></strong>: Counts the number of accounts where the <code>income</code> is between 20,000 and 50,000. The <strong><code>CASE WHEN</code></strong> expression checks if the income falls within the range, and <strong><code>COUNT()</code></strong> tallies those rows.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-third-select-statement-high-salary">3. <strong>Third SELECT Statement (High Salary)</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Categorizes accounts with an income <strong>greater than 50,000</strong> as <strong>'High Salary'</strong>.</li>
+<li><strong>Explanation</strong>:<ul>
+<li><strong><code>'High Salary' AS category</code></strong>: This assigns the label <strong>'High Salary'</strong> to the third group.</li>
+<li><strong><code>COUNT(CASE WHEN income &gt; 50000 THEN 1 END) AS accounts_count</code></strong>: Counts the number of accounts where the <code>income</code> is greater than 50,000. The <strong><code>CASE WHEN</code></strong> expression checks if the income is above 50,000, and <strong><code>COUNT()</code></strong> aggregates those rows.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-union-all">4. <strong>UNION ALL</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Combines the results from the three <strong>SELECT</strong> statements into a single result set.</li>
+<li><strong>Explanation</strong>:<ul>
+<li><strong><code>UNION ALL</code></strong> combines the results of each <strong><code>SELECT</code></strong> without removing duplicates. This is appropriate here because we want to include all the categories (Low Salary, Average Salary, and High Salary) without filtering out any duplicate rows.</li>
+<li><strong>Important</strong>: <strong><code>UNION ALL</code></strong> preserves the original counts and groups, whereas <strong><code>UNION</code></strong> would remove duplicates, which is unnecessary in this case.</li>
+</ul>
+</li>
+</ul>
+<h3 id="query-01-is-slower">Query 01 is slower</h3>
+<details class="note">
+<summary> Multiple Full Table Scans:</summary>
+<ul>
+<li>
+<p>Query01 performs three separate full table scans for each of the UNION ALL subqueries. Each subquery scans the entire Accounts table and applies different conditions (income ranges) to count the rows.</p>
+</li>
+<li>
+<p>This means that the table is being scanned three times—once for each salary category. This increases the execution time, especially for large datasets.</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary> Multiple COUNT Calculations:</summary>
+<ul>
+<li>In each of the subqueries, the COUNT function is used along with a CASE statement to evaluate conditions and count rows. The entire Accounts table must be evaluated for each CASE statement independently.</li>
+<li>For larger datasets, this repeated evaluation of the same table leads to unnecessary redundancy and inefficiency</li>
+</ul>
+</details>
+<div class="language-sql highlight"><span class="filename">query02✅</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">WITH</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20000</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">low_salary</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">20000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">average_salary</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">income</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">high_salary</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">Accounts</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Low Salary&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="n">low_salary</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">accounts_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">counts</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Average Salary&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">average_salary</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">counts</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;High Salary&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">high_salary</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">counts</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="why-the-query02-is-faster">🚀 Why the Query02 is Faster:</h3>
+<details class="note">
+<summary>Single Table Scan:</summary>
+<ul>
+<li>
+<p>Query02 performs a single scan of the Accounts table inside the WITH clause (common table expression, CTE). This query calculates the sum of accounts that match each salary range (low_salary, average_salary, high_salary).</p>
+</li>
+<li>
+<p>Instead of scanning the table multiple times for each range, the table is scanned once, and all calculations are done in that single pass. This significantly reduces the overhead compared to Query01.</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Aggregation within a Single Query:</summary>
+<ul>
+<li>
+<p>In Query02, the SUM function is used to count the accounts in each salary range within a single aggregation step.</p>
+</li>
+<li>
+<p>This avoids the need for multiple CASE statements and COUNT functions across multiple subqueries, reducing the total computation time.</p>
+</li>
+<li>
+<p>The results for all three categories are computed in one pass, making it faster for larger datasets.</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Use of CTE (Common Table Expression):</summary>
+<ul>
+<li>
+<p>The CTE in Query02 aggregates all the counts first, and then the individual categories are selected from the aggregated results using a simple UNION ALL.</p>
+</li>
+<li>
+<p>The aggregation (SUM) is performed once, and then the result is reused for each category, making the overall query much more efficient.</p>
+</li>
+</ul>
+</details>
+<div class="admonition success">
+<p class="admonition-title">🎯Key Performance Differences:</p>
+<ul>
+<li>
+<p>Query01 requires multiple table scans (one for each category), while - Query02 performs only a single table scan.</p>
+</li>
+<li>
+<p>Query01 calculates counts in separate subqueries, which means the table is processed multiple times. Query02 does all the calculations in a single aggregation step, minimizing redundancy.</p>
+</li>
+<li>
+<p>Query02 uses a CTE to perform all the calculations upfront and then retrieves the results efficiently, whereas Query01 performs the COUNT function and conditions multiple times.</p>
+</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

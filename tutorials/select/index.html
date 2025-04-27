@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/diptu/my-sql-journe/tutorials/1683/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/diptu/my-sql-journe/tutorials/select/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>1683 - my-sql-journe</title>
+    <title>📚 MySQL 3.1: SELECT PART 01 - my-sql-journe</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "1683";
-        var mkdocs_page_input_path = "tutorials/1683.md";
-        var mkdocs_page_url = "/diptu/my-sql-journe/tutorials/1683/";
+        var mkdocs_page_name = "\ud83d\udcda MySQL 3.1: SELECT PART 01";
+        var mkdocs_page_input_path = "tutorials/select.md";
+        var mkdocs_page_url = "/diptu/my-sql-journe/tutorials/select/";
       </script>
     
     <!--[if lt IE 9]>
@@ -65,7 +65,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">1683</li>
+      <li class="breadcrumb-item active">📚 MySQL 3.1: SELECT PART 01</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -74,26 +74,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><img alt="Easy" src="https://img.shields.io/badge/Difficulty-Easy-brightgreen" />
-<a href="https://leetcode.com/problems/invalid-tweets/">1683. Invalid Tweets</a></p>
-<h2 id="problem-statement">Problem Statement</h2>
-<p>Write a solution to find the IDs of the invalid tweets. The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.</p>
-<p>Return the result table in any order.</p>
-<h2 id="solution">Solution</h2>
-<p>The provided solution utilizes a simple <code>SELECT</code> statement combined with a length checking function:</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">tweet_id</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">Tweets</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
-</span></code></pre></div>
-<h3 id="explanation">🧠 Explanation</h3>
+                <h1 id="mysql-31-select-part-01">📚 MySQL 3.1:<a href="../selectp1/"> <code>SELECT PART 01</code> </a></h1>
+<h1 id="mysql-32-select-part-02">📚 MySQL 3.2:<a href="./selectp2.md"> <code>SELECT PART 02</code>)</a></h1>
+<h2 id="references">📚 References</h2>
 <ul>
-<li><code>SELECT tweet_id</code>:</li>
-<li>Specifies that we want to retrieve the <code>tweet_id</code> column.</li>
-<li><code>FROM Tweets</code>:</li>
-<li>The query fetches data from the table named <code>Tweets</code>.</li>
-<li><code>WHERE LENGTH(content) &gt; 15</code>:</li>
-<li>The <code>LENGTH()</code> function calculates the number of characters in the <code>content</code> field.</li>
-<li>The<code>WHERE</code> clause filters the results to include only those rows where the <code>content</code> has more than 15 characters.</li>
+<li><a href="https://www.mysqltutorial.org/mysql-basics/mysql-select/">MySQL INSERT Tutorial – MySQL Tutorial</a></li>
 </ul>
               
             </div>

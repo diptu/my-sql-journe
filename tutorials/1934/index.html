@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/diptu/my-sql-journe/tutorials/1934/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>1934 - my-sql-journe</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "1934";
+        var mkdocs_page_input_path = "tutorials/1934.md";
+        var mkdocs_page_url = "/diptu/my-sql-journe/tutorials/1934/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> my-sql-journe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">tutorials</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../reference/">Refference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">my-sql-journe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">1934</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <ul>
+<li><img alt="Difficulty: Medium" src="https://img.shields.io/badge/Difficulty-Medium-yellow" />
+<a href="https://leetcode.com/problems/confirmation-rate/">1934. Confirmation Rate</a></li>
+</ul>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>The confirmation rate of a user is the number of 'confirmed' messages divided by the total number of requested confirmation messages. The confirmation rate of a user that did not request any confirmation messages is 0. Round the confirmation rate to two decimal places.</p>
+<p>Write a solution to find the confirmation rate of each user.</p>
+<p>Return the result table in any order.</p>
+<h2 id="solution">Solution</h2>
+<h1 id="explanation-of-the-sql-query">📊 Explanation of the SQL Query</h1>
+<p>This SQL query calculates the <strong>confirmation rate</strong> for each user by determining the percentage of "confirmed" actions out of all possible actions for each user. The query uses the <code>RIGHT JOIN</code> to ensure all users from the <code>Signups</code> table are included, even if there is no corresponding record in the <code>Confirmations</code> table.</p>
+<div class="language-sql highlight"><span class="filename">query01</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;confirmed&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">confirmation_rate</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">Confirmations</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Signups</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w">  </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="breakdown-of-the-query">📈 Breakdown of the Query</h3>
+<h1 id="sql-query-breakdown">🔎SQL Query Breakdown</h1>
+<h3 id="1-select-user_id">1. <code>SELECT user_id,</code></h3>
+<ul>
+<li><strong>Purpose</strong>: Selects the <code>user_id</code> column from the result set.</li>
+<li><strong>Explanation</strong>: This part of the query retrieves the unique identifier for each user in the final result.</li>
+</ul>
+<h3 id="2-roundavgcase-when-action-confirmed-then-1-else-0-end-2-as-confirmation_rate">2. <code>ROUND(AVG(CASE WHEN action = 'confirmed' THEN 1 ELSE 0 END), 2) AS confirmation_rate</code></h3>
+<ul>
+<li><strong>Purpose</strong>: Calculates the <strong>confirmation rate</strong> for each user and rounds the result to 2 decimal places.</li>
+<li><strong>Explanation</strong>:</li>
+<li><strong><code>CASE WHEN action = 'confirmed' THEN 1 ELSE 0 END</code></strong>:<ul>
+<li>This conditional expression checks if the <code>action</code> is <code>'confirmed'</code>.</li>
+<li>If the <code>action</code> is <code>'confirmed'</code>, it returns <code>1</code>. Otherwise, it returns <code>0</code>.</li>
+</ul>
+</li>
+<li><strong><code>AVG()</code></strong>: The <code>AVG()</code> function calculates the <strong>average</strong> of the <code>1</code>s and <code>0</code>s, effectively computing the confirmation rate.<ul>
+<li>The confirmation rate is the percentage of times the action was 'confirmed' compared to all actions for each user.</li>
+</ul>
+</li>
+<li><strong><code>ROUND(..., 2)</code></strong>: This rounds the calculated average (confirmation rate) to <strong>2 decimal places</strong>, making the result more readable.</li>
+<li><strong><code>AS confirmation_rate</code></strong>: Aliases the resulting column as <code>confirmation_rate</code>, which will be used in the output.</li>
+</ul>
+<h3 id="3-from-confirmations">3. <code>FROM Confirmations</code></h3>
+<ul>
+<li><strong>Purpose</strong>: Specifies the source table for the data.</li>
+<li><strong>Explanation</strong>: The query retrieves data from the <code>Confirmations</code> table, which stores records of user actions, such as whether an action was confirmed.</li>
+</ul>
+<h3 id="4-right-join-signups-using-user_id">4. <code>RIGHT JOIN Signups USING (user_id)</code></h3>
+<ul>
+<li><strong>Purpose</strong>: Performs a <strong>RIGHT JOIN</strong> between the <code>Confirmations</code> table and the <code>Signups</code> table using the <code>user_id</code> column.</li>
+<li><strong>Explanation</strong>:</li>
+<li><strong>RIGHT JOIN</strong> ensures that all rows from the <code>Signups</code> table are included in the result, even if there is no corresponding record in the <code>Confirmations</code> table.</li>
+<li><strong><code>USING (user_id)</code></strong>: This specifies that the join should be based on the <code>user_id</code> column, which exists in both tables.</li>
+</ul>
+<h3 id="5-group-by-user_id">5. <code>GROUP BY user_id</code></h3>
+<ul>
+<li><strong>Purpose</strong>: Groups the results by <code>user_id</code>.</li>
+<li><strong>Explanation</strong>: The <code>GROUP BY</code> clause ensures that the aggregation (i.e., calculating the average confirmation rate) is done for each individual user, rather than for the entire dataset.</li>
+</ul>
+<hr />
+<h2 id="summary">💡 Summary:</h2>
+<ul>
+<li>The query calculates the <strong>confirmation rate</strong> for each user.</li>
+<li>It uses a <strong>RIGHT JOIN</strong> to include all users from the <code>Signups</code> table, even if they don't have a corresponding entry in the <code>Confirmations</code> table.</li>
+<li>The confirmation rate is calculated by counting the number</li>
+</ul>
+<div class="language-sql highlight"><span class="filename">query02</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="k">IF</span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;confirmed&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">confirmation_rate</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">Signups</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">LEFT</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Confirmations</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">user_id</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">user_id</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="why-the-query02-is-faster">🚀 Why the Query02 is Faster:</h3>
+<ul>
+<li>
+<p><code>LEFT JOIN</code> is more efficient than RIGHT JOIN in this scenario.</p>
+</li>
+<li>
+<p>Using the <code>IF()</code> function for conditional logic is more efficient than CASE WHEN.</p>
+</li>
+<li>
+<p>The query reduces redundant data and processing by efficiently joining and aggregating the data.</p>
+</li>
+<li>
+<p>Indexing optimization with <code>LEFT JOIN</code> and direct aggregation with AVG() improve the overall performance of the query.</p>
+</li>
+<li>
+<p>In conclusion, the use of a <code>LEFT JOIN</code>, <code>IF()</code> function, and efficient aggregation makes this query faster compared to the previous one by minimizing data processing and enhancing the overall query optimization.</p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
