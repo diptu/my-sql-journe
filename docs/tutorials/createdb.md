@@ -23,6 +23,10 @@ CREATE DATABASE IF NOT EXISTS demo;
 ```sql
 SHOW DATABASES;
 ```
+## Displaying Table Structure
+```sql
+DESCRIBE employees;
+```
 
 ## 📚 References
 
